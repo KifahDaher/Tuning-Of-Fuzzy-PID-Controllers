@@ -1,0 +1,49 @@
+[System]
+Name='pidfuzzys'
+Type='sugeno'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='e'
+Range=[-100 100]
+NumMFs=3
+MF1='neg':'trimf',[-100 -100 0]
+MF2='zero':'trimf',[-100 0 100]
+MF3='pos':'trimf',[0 100 100]
+
+[Input2]
+Name='ce'
+Range=[-100 100]
+NumMFs=3
+MF1='neg':'trimf',[-100 -100 0]
+MF2='zero':'trimf',[-100 0 100]
+MF3='pos':'trimf',[0 100 100]
+
+[Output1]
+Name='output1'
+Range=[0 1]
+NumMFs=5
+MF1='-200':'constant',[-200]
+MF2='-100':'constant',[-100]
+MF3='0':'constant',[0]
+MF4='100':'constant',[100]
+MF5='200':'constant',[200]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 2 (1) : 1
+1 3, 3 (1) : 1
+2 1, 2 (1) : 1
+2 2, 3 (1) : 1
+2 3, 4 (1) : 1
+3 1, 3 (1) : 1
+3 2, 4 (1) : 1
+3 3, 5 (1) : 1
